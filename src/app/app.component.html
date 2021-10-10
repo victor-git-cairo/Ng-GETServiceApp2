@@ -1,44 +1,62 @@
-<h1>GET HTTP Code Example in Angular</h1>
+<h1 class="has-text-centered">GET HTTP Code Example in Angular</h1>
 
-<div *ngIf="loading">loading ...</div>
+<div class="columns is-mobile is-centered">
+  <div class="column is-half">
+    <div *ngIf="loading" class="message is-black">loading ...</div>
+    <!-- [(ngModel)] connects the input variable to component variable -->
+    <label class="label" for="user">GitHub Username</label>
 
-<!-- [(ngModel)] connects the input variable to component variable -->
-<div>
-  <label for="user">GitHub Username</label>
-  <input type="text" name="user" id="user" [(ngModel)]="user">
+    <input 
+      class="input is-success" 
+      type="text" name="user" 
+      id="user" 
+      [(ngModel)]="user">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+      
+      <div class="field">
+        <button class="button is-success" (click)="getRepos()">Get Repos </button> 
+      </div>
+
+     <div *ngIf="errorMessage" class="message is-black">{{errorMessage | json}}</div> 
+  </div>
 </div>
 
-<div>
-  <button (click)="getRepos()">Get Repos</button>
+<div class="columns is-mobile is-centered">
+  <div class="column is-half">
+    <h2 class="has-text-centered">Repos</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Url</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repo of repos">
+          <td>
+            {{repo.id}}
+          </td>
+          <td>
+            {{repo.name}}
+          </td>
+          <td>
+            {{repo.html_url}}
+          </td>
+          <td>
+            {{repo.description}}
+          </td>
+        </tr>
+      </tbody>
+    
+    </table>
+  </div>
 </div>
 
-<div *ngIf="errorMessage">{{errorMessage}}</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Url</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let repo of repos">
-      <td>
-        {{repo.id}}
-      </td>
-      <td>
-        {{repo.name}}
-      </td>
-      <td>
-        {{repo.html_url}}
-      </td>
-      <td>
-        {{repo.description}}
-      </td>
-    </tr>
-
-  </tbody>
-
-</table>

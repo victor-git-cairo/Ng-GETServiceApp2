@@ -13,9 +13,8 @@ export class AppComponent {
   repos: repos[] = [];
 
   loading: boolean = false;
-  errorMessage = "this is an error";
-  title = 'service-http';
-
+  errorMessage:string = "";
+  
   constructor(private gitHubService: GitHubService){}
 
   getRepos() {
