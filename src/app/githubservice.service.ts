@@ -13,6 +13,6 @@ export class GitHubService {
 
     getRepos(user:string):Observable<any> {
      return this.http.get(this.baseUrl + 'users/'+ user + '/repos')
-    //  return this.http.get(this.baseUrl + 'users/'+ user + '/repos', { observe: 'response'})
+    //  return this.http.get(this.baseUrl + 'users/'+ user + '/repos', { observe: 'response', responseType: 'json'})    
     }
 }
