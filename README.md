@@ -1,2 +1,2 @@
 # gethttp-angular
-Get Http Service Demo - Angular
+HTTP GET Service in Angular
